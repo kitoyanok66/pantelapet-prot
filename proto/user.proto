@@ -1,0 +1,43 @@
+syntax = "proto3";
+package user;
+option go_package = "github.com/kitoyanok66/pantelapet-prot/proto/user";
+
+import "google/protobuf/empty.proto";
+
+message User {
+    string id = 1;
+    string email = 2;
+}
+
+message CreateUserRequest {
+    string email = 1;
+}
+message CreateUserResponse {
+    User user = 1;
+}
+
+message GetUserRequest {
+    string id = 1;
+}
+
+message ListUsersRequest {}
+message ListUsersResponse {
+    repeated User users = 1;
+}
+
+message UpdateUserRequest {
+    string id = 1;
+    string email = 2;
+}
+
+message DeleteUserRequest {
+    string id = 1;
+}
+
+service UserService {
+    rpc CreateUser (CreateUserRequest) returns (CreateUserResponse);
+    rpc GetUser (GetUserRequest) returns (User);
+    rpc ListUsers (ListUsersRequest) returns (ListUsersResponse);
+    rpc UpdateUser (UpdateUserRequest) returns (User);
+    rpc DeleteUser (DeleteUserRequest) returns (google.protobuf.Empty);
+}
