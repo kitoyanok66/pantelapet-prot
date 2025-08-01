@@ -1,4 +1,4 @@
-PROTOS := proto/*.proto
+PROTOS := $(wildcard proto/*/*.proto)
 OUT_DIR := .
 
 generate:
@@ -8,4 +8,5 @@ generate:
 		$(PROTOS)
 
 clean:
-	find . -name "*.pb.go" -delete
+# 	find . -name "*.pb.go" -delete
+	del /S /Q *.pb.go
